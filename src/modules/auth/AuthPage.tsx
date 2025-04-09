@@ -1,0 +1,3 @@
+const AuthPage = () => <></>;
+
+export { AuthPage };

@@ -1,0 +1,7 @@
+.linkcolor {
+    color: black;
+}
+
+.linkcolor:hover {
+    color: blue;
+}

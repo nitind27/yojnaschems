@@ -1,0 +1,26 @@
+/* Studentlistinsert.css */
+.custom-checkbox {
+    appearance: none; /* Remove default styling */
+    width: 20px; /* Set width */
+    height: 20px; /* Set height */
+    border: 2px solid #007bff; /* Border color */
+    border-radius: 3px; /* Rounded corners */
+    outline: none; /* Remove outline */
+    cursor: pointer; /* Pointer cursor for normal state */
+}
+
+.custom-checkbox:checked {
+    background-color: #007bff; /* Blue background when checked */
+}
+
+/* Style for disabled state */
+.custom-checkbox.disabled {
+    background-color: #007bff; /* Keep blue background for checked state */
+    opacity: 0.5; /* Make it slightly transparent */
+    cursor: not-allowed; /* Change cursor to not-allowed */
+}
+
+/* Optional hover effect for enabled checkboxes */
+.custom-checkbox:not(.disabled):hover {
+    border-color: #0056b3; /* Darker blue on hover */
+}

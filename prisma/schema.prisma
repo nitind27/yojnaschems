@@ -1,0 +1,774 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model ClusterData {
+  cluster_id        Int       @id @default(autoincrement()) @map("cluster_id")
+  cluster_name      String    @db.VarChar(255) @map("cluster_name")
+  status            String    @db.VarChar(255) @map("status")
+  ins_date_time     DateTime  @default(now()) @map("ins_date_time") // Automatically set insertion date
+  update_date_time  DateTime? @map("update_date_time")              // Nullable DateTime
+
+  @@map("tbl_cluster") // Map the model to the "tbl_cluster" table in your database
+}
+
+model TalukasData {
+
+  id        BigInt   @id @default(autoincrement())
+  name         String    @db.VarChar(255) @map("name")
+  name_marathi String     @db.VarChar(20) @map("name_marathi")
+  status       String    @db.VarChar(10) @default("Active") @map("status")
+
+  @@map("talukas") // Map the model to the "talukas" table in your database
+}
+
+model Grampanchayat {
+  id           Int       @id @default(autoincrement()) @map("id")
+  name         String    @db.VarChar(100) @map("name")
+  name_marathi String    @db.VarChar(100) @map("name_marathi")
+  taluka_id    Int       @map("taluka_id")
+  population   Int       @map("population")
+  status       String    @db.VarChar(10) @default("Active") @map("status")
+
+  @@map("tbl_gp") // Map the model to the "tbl_gp" table in your database
+}
+
+model Villages {
+  id                Int       @id @default(autoincrement()) @map("id")
+  taluka_id         Int       @map("taluka_id")
+  gp_id             Int       @map("gp_id")
+  name              String    @db.VarChar(50) @map("name")
+  name_marathi      String    @db.VarChar(50) @map("name_marathi")
+  total_population   Int       @map("total_population")
+  trible_population   Int       @map("trible_population")
+  arthik_maryada   Decimal    @db.Decimal(10,2) @map("arthik_maryada")
+  village_type     String     @db.VarChar(10) @map("village_type")
+  status           String     @db.VarChar(10) @default("Active") @map("status")
+
+
+  @@map("villages") // Map the model to the "villages" table in your database
+}
+
+
+model School {
+  school_id        Int       @id @default(autoincrement()) @map("school_id")
+  school_name      String    @db.VarChar(255) @map("school_name")
+  address          String    @db.Text @map("address")
+  cluster_id       Int       @map("cluster_id")
+  taluka_id        Int       @map("taluka_id")
+  udias            String    @db.VarChar(15) @map("udias")
+  stds             String    @db.VarChar(50) @map("stds")
+  medium           String    @db.VarChar(50) @map("medium")
+  email_id         String    @db.VarChar(80) @map("email_id")
+  mukhya_name      String    @db.VarChar(100) @map("mukhya_name")
+  mukhya_contact   String    @db.VarChar(13) @map("mukhya_contact")
+  mukhya_email     String    @db.VarChar(80) @map("mukhya_email")
+  purush_name      String    @db.VarChar(100) @map("purush_name")
+  purush_contact   String    @db.VarChar(13) @map("purush_contact")
+  purush_email     String    @db.VarChar(80) @map("purush_email")
+  stri_name        String    @db.VarChar(100) @map("stri_name")
+  stri_contact     String    @db.VarChar(13) @map("stri_contact")
+  stri_email       String    @db.VarChar(80) @map("stri_email")
+  status           String    @db.VarChar(10) @default("Active") @map("status")
+  ins_date_time    DateTime  @default(now()) @map("ins_date_time") // Automatically set insertion date
+  school_name_mr   String    @db.VarChar(100) @map("school_name_mr")
+  image_urls       String    @db.Text @map("image_urls")
+  pat_sankhya     Int? 
+  school_type      String    @db.VarChar(11) @map("school_type")
+  @@map("tbl_school") // Map the model to the "tbl_school" table in your database
+}
+
+
+model StudentOld {
+  studentId       Int      @id @default(autoincrement())
+  schoolId        Int
+  standardId      Int
+  grNo            String   @db.VarChar(10)
+  saralId         String   @db.VarChar(25)
+  studName        String   @db.VarChar(50)
+  motherName      String   @db.VarChar(50)
+  dob             DateTime
+  gender          String   @db.VarChar(15)
+  cast            String   @db.VarChar(15)
+  aadhaar         String   @db.VarChar(15)
+  contactNo       String   @db.VarChar(15)
+  studAddress     String   @db.Text
+  status          String   @default("Active") @db.VarChar(10)
+  insDateTime     DateTime
+  updateDateTime  DateTime
+  sickleCell      String   @default("No") @db.VarChar(10)
+  sickleReport    String   @db.VarChar(5)
+
+  @@map("tbl_students_old")
+}
+
+model Facility {
+  id        BigInt   @id @default(autoincrement())
+  name      String   @db.VarChar(1000)
+  status    String   @default("Active") @db.VarChar(10)
+  createdAt DateTime? @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  srNo      Int?      @map("sr_no")
+  @@map("facilities")
+}
+
+
+model Representative {
+  id        BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  name      String   @db.VarChar(255)
+  status    String   @default("Active") @db.VarChar(10)
+  created_at DateTime? @db.Timestamp(6)
+  updated_at DateTime? @db.Timestamp(6)
+
+  @@map("representatives")
+}
+
+
+model Supervisor {
+  sup_id        Int      @id @default(autoincrement()) // Auto-incremented ID field
+  sup_name     String  @db.VarChar(150)
+  sup_contact   String  @db.VarChar(13)
+  sup_address   String  @db.VarChar(255)
+  sup_password  String  @db.VarChar(32)
+  imei_number   String  @db.VarChar(20)
+  category_id   Int     @db.Int
+  padnam_id     Int     @db.Int
+  sup_status    String   @default("Active") @db.VarChar(10)
+
+  @@map("tbl_supervisor")
+}
+
+model Padnam {
+  padnam_id Int     @id @db.Int
+  padnam   String  @db.VarChar(50)
+  status   String  @default("Active") @db.VarChar(10)
+
+  @@map("tbl_padnam")
+}
+
+model UserCategory {
+  user_cat_id    Int     @id @db.Int
+  category_name String   @db.VarChar(20)
+  status       String   @default("Active") @db.VarChar(10)
+
+  @@map("tbl_user_category")
+}
+
+model Bank {
+  id               Int      @id @default(autoincrement()) @db.Int
+  name             String   @db.VarChar(100)
+  account_no       String   @db.VarChar(100)
+  yojana_year_id   Int      @db.Int
+  amount           Decimal   @db.Decimal(20, 2)
+  status           String    @default("Active") @db.VarChar(10)
+ ins_date_time    DateTime  @default(now()) @map("ins_date_time") // Automatically set insertion date
+  update_date_time DateTime? @db.DateTime // Optional and nullable
+  @@map("tbl_bank")
+}
+
+model YojanaYear {
+  yojana_year_id   Int     @id @db.Int
+  yojana_year   String  @db.VarChar(20)
+  is_delete     String   @default("No") @db.VarChar(20)
+  year_status   String   @db.VarChar(10)
+
+  @@map("tbl_yojana_year")
+}
+
+model OpeningBalance {
+  open_bal_id          Int      @id @default(autoincrement()) @db.Int
+  open_bal          Decimal  @db.Decimal(10, 2)
+  year_id           Int      @db.Int
+  status           String   @default("Active") @db.VarChar(10)
+ ins_date_time    DateTime  @default(now()) @map("ins_date_time") // Automatically set insertion date
+  update_date_time DateTime? @db.DateTime // Optional and nullable
+
+  @@map("tbl_opening_balance")
+}
+
+model NidhiVitaran {
+  id             BigInt   @id @default(autoincrement())
+  requirement_id   Int      @db.Int
+  work_master_id   BigInt
+  date           DateTime? @db.Date
+  installment    String
+  amount         Float    @default(0.00)
+  photo          String
+  latitude       String   @default("")
+  longitude      String   @default("")
+  address        String   @default("")
+  status         String   @default("Active")
+  created_at      DateTime? @default(now()) @db.Timestamp(6)
+  updated_at      DateTime? @updatedAt @db.Timestamp(6)
+
+  @@map("nidhi_vitaran") // Maps to the existing table name in the database
+}
+
+
+model WorkMaster {
+  id                         BigInt   @id @default(autoincrement())
+  taluka_id                  BigInt
+  gp_id                      BigInt
+  village_id                 BigInt
+  facility_id                BigInt
+  representative_id          BigInt
+  representative_name         String
+  name                       String
+  estimated_amount           Float    @default(0.00)
+  tantrik_manyata_amount     Float    @default(0.00)
+  photo                      String
+  prashashakiya_manyata      String   @db.VarChar(5)
+  prashashakiya_manyata_no   String
+  prashashakiya_manyata_date DateTime? @db.Date
+  prashashakiya_manyata_amount Float
+  latitude                   String   @default("")
+  longitude                  String   @default("")
+  address                    String   @default("")
+  status                     String   @default("Active") @db.VarChar(10)
+  created_at                 DateTime? @db.Date
+  updated_at                 DateTime? @db.Date
+
+  @@map("work_master")
+}
+
+model Notification {
+  notifi_id         Int      @id @default(autoincrement())
+  notifications_type String   @db.VarChar(255)
+  details           String   @db.VarChar(255) 
+  links             String   @db.VarChar(255)
+  new_icon          String   @db.Text
+  add_date          DateTime @default(now()) @db.Date
+  header            String   @db.VarChar(20)
+  img               String   @db.VarChar(255)
+  status            String   @default("Start") @db.VarChar(20)
+
+  @@map("tbl_notifications") // Maps to the actual table name in the database
+}
+
+model student {
+  student_id            Int      @id @default(autoincrement())
+  serial_number         String?  @db.VarChar(220)
+  uid                   String?  @db.VarChar(50)
+  gr_no                 String?  @db.VarChar(20)
+  date_of_admision     DateTime? @db.Date
+  year_add              String?  @db.VarChar(20)
+  school_id             Int?
+  admited_in_std       Int?
+  current_std           Int?
+  division              String?  @db.VarChar(100)
+  first_name            String?  @db.VarChar(100)
+  middle_name           String?  @db.VarChar(100)
+  last_name             String?  @db.VarChar(100)
+  date_of_birth         DateTime? @db.Date
+  place_of_birth        String    @db.VarChar(100)
+  gender                String?  @db.VarChar(10)
+  height                String?  @db.VarChar(20)
+  weight                String?  @db.VarChar(20)
+  mother_name           String?  @db.VarChar(100)
+  religion              String?  @db.VarChar(20)
+  lang_id               Int?
+  cast                  String    @db.VarChar(20)
+  address               String?  @db.VarChar(255)
+  contact_no            String?  @db.VarChar(15)
+  full_name             String?  @db.VarChar(100)
+  user_id               Int?
+  cluster_id            Int?
+  dropout               String?   @db.VarChar(10)
+  dropout_date_time     DateTime?
+  status                String    @default("Active") @db.VarChar(10)
+  ins_date_time         DateTime?
+  update_date_time      DateTime?
+  students_id_saral     String?   @db.VarChar(50)
+  type_of_students      String?   @db.VarChar(30)
+  saral_id              String?   @db.VarChar(50)
+  date_leave            DateTime? @db.Date
+  remarks               String?   @db.VarChar(255)
+  stream                String?   @db.VarChar(100)
+  profile_photo         String?   @db.VarChar(255)
+  photo_update_date_time DateTime?
+  sickle_cell           String?   @db.VarChar(150)
+  aadhaar               String?   @db.VarChar(20)
+  sickle_report         String?   @db.VarChar(20)
+
+@@map("tbl_students")
+}
+
+model Standard {
+  standard_id       Int      @id @default(autoincrement())
+  section_id        Int
+  standard_name     String   @db.VarChar(20)
+  status            String   @default("Active") @db.VarChar(10)
+  ins_date_time     DateTime @default(now())
+  update_date_time  DateTime @updatedAt
+
+  @@map("tbl_standard") // Maps to the original SQL table name
+}
+
+model Patsankhya {
+  pat_id      Int    @id @default(autoincrement())
+  school_id   Int
+  standard_id Int
+  sankhya     Int
+
+  @@map("tbl_patsankhya")
+}
+
+model SubCategory {
+  sub_category_id Int      @id @default(autoincrement())
+  category_id     Int
+  sub_category_name String
+  yojana_year_id  Int
+  bank_id         Int
+  amount          String   @db.VarChar(20)
+  status          String    @default("Active")
+  created_at      DateTime  @default(now())
+  updated_at      DateTime? @updatedAt
+  for_app         String    @default("No")
+
+    @@map("tbl_sub_category") // Maps to the original SQL table name
+}
+
+
+model YojanaMaster {
+  yojana_id        Int      @id @default(autoincrement())
+  category_id      Int
+  sub_category_id   Int
+  yojana_name      String   @db.VarChar(255)
+  date_ins         DateTime @db.Date
+  uddesh_swarup    String   @db.VarChar(255)
+  patrata         String   @db.VarChar(255)
+  sampark         String   @db.VarChar(255)
+  is_delete        String   @default("No") @db.VarChar(20)
+  status          String   @default("Active") @db.VarChar(20)
+  gat             String   @db.VarChar(255)
+  yojana_year_id    Int
+  yojana_type      String   @db.VarChar(20)
+  amount          String  @db.VarChar(20)
+
+  @@map("tbl_yojana_master")
+}
+
+
+model Category {
+  category_id Int    @id @default(autoincrement())
+  category_name String  @db.VarChar(50)
+  status String      @default("Active") @db.VarChar(10)
+  created_at DateTime
+  updated_at DateTime?
+  for_app String      @default("Yes") @db.VarChar(5)
+
+    @@map("tbl_category")
+}
+
+
+
+model yojnatype {
+  yojana_type_id    Int      @id @default(autoincrement())
+  category_id       Int
+  sub_category_id    Int
+  yojana_type       String   @db.VarChar(100)
+  status            String   @default("Active") @db.VarChar(10)
+  ins_date_time     DateTime
+  update_date_time  DateTime?
+
+  @@map("tbl_yojana_type")
+}
+
+
+model YojanaMasterApp {
+  yojana_id        Int      @id @default(autoincrement())
+  category_id      Int
+  sub_category_id   Int
+  yojana_name      String   @db.VarChar(255)
+  date_ins         DateTime @db.Date
+  uddesh_swarup    String   @db.VarChar(255)
+  patrata          String   @db.VarChar(255)
+  sampark          String   @db.VarChar(255)
+  is_delete        String   @default("No") @db.VarChar(20)
+  status           String   @default("Active") @db.VarChar(20)
+  gat              String   @db.VarChar(255)
+  yojana_year_id   Int
+  yojna_img        String   @db.VarChar(255)
+
+  @@map("tbl_yojana_master_app")
+}
+
+model beneficiary {
+  beneficiary_id      Int      @id @default(autoincrement())
+  category_id         Int
+  sub_category_id     Int
+  yojana_year_id      Int
+  yojana_type         String   @db.VarChar(20)
+  yojana_id           Int
+  taluka_id           Int
+  gp_id               Int
+  village_id          Int
+  surname             String   @db.VarChar(100)
+  firstname           String   @db.VarChar(100)
+  middlename          String   @db.VarChar(100)
+  fullname            String   @db.VarChar(100)
+  gat_name            String   @db.VarChar(100)
+  gat_certificate      String   @db.VarChar(50)
+  member              Int
+  caste_id            Int
+  beneficiary_type    String   @db.VarChar(100)
+  rashion_no          String   @db.VarChar(20)
+  aadhar              String   @db.VarChar(20)
+  mobile              String   @db.VarChar(10)
+  bank_name           String   @db.VarChar(50)
+  ifsc                String   @db.VarChar(50)
+  ac_no               String   @db.VarChar(50)
+  tot_finance         String   @db.VarChar(20)
+  amount_paid         String   @db.VarChar(100)
+  fourty              String   @default("No") @db.VarChar(10)
+  sixty               String   @default("No") @db.VarChar(10)
+  hundred             String   @default("No") @db.VarChar(10)
+  status              String   @default("Active") @db.VarChar(10)
+  date_ins            DateTime
+  date_update         DateTime?
+  organization        String   @db.VarChar(100)
+  work_order_date     DateTime?
+
+    @@map("tbl_beneficiary")
+}
+
+
+
+model WorkMasterDemo {
+  id                        Int      @id @default(autoincrement())
+  taluka_id                  Int?  @map("taluka_id")
+  gp_id                      Int?  @map("gp_id")
+  village_id                 Int?  @map("village_id")
+  facility_id                Int?  @map("facility_id")
+  representative_id          Int?  @map("representative_id")
+  representative_name        String?  @map("representative_name")
+  name                       String?  @map("name")
+  estimated_amount           Float?   @map("estimated_amount")
+  tantrik_manyata_amount     Float?   @map("tantrik_manyata_amount")
+  photo                      String?  @map("photo")
+  prashashakiya_manyata      String?  @map("prashashakiya_manyata")
+  prashashakiya_manyata_no   String?  @map("prashashakiya_manyata_no")
+  prashashakiya_manyata_date DateTime? @map("prashashakiya_manyata_date")
+  prashashakiya_manyata_amount Float?   @map("prashashakiya_manyata_amount")
+  latitude                   String?  @map("latitude")
+  longitude                  String?  @map("longitude")
+  address                    String?  @map("address")
+  status                     String?  @map("status")
+  created_at                 DateTime? @map("created_at") @default(now())
+  updated_at                 DateTime? @map("updated_at") @default(now()) @updatedAt
+  estimatedtotalamount       String?  @db.VarChar(10)
+  number_work                Int?     @map("number_work")
+  genratedworkdate           DateTime? @map("genratedworkdate")
+  generatednumber            String?   @map("generatednumber")
+  type                       String?   @map("type")
+  @@index([taluka_id])
+
+    @@map("work_master_demo")
+}
+
+
+model parivahanbeneficiary {
+  parivahan_id      Int      @id @default(autoincrement())
+  parivahan_no      Int
+  parivahan_date    DateTime
+  outward_no        String   @db.VarChar(50)
+  sup_id            Int
+  yojana_year_id    Int
+  yojana_type       String   @db.VarChar(20)
+  yojana_id         Int
+  beneficiary_id    String   @db.VarChar(100)
+  installment       String   @db.VarChar(10)
+  work_status       String   @default("Pending") @db.VarChar(10)
+  status            String   @default("Active") @db.VarChar(10)
+  ins_date          DateTime
+
+  @@map("tbl_parivahan_beneficiary")
+}
+
+
+model tblparivahan {
+  parivahan_id      Int        @id @default(autoincrement())
+  parivahan_no      BigInt
+  parivahan_date    DateTime @db.Date
+  outward_no        String   @db.VarChar(50)
+  sup_id            Int
+  yojana_year_id    Int
+  yojana_type       String   @db.VarChar(20)
+  yojana_id         Int
+  beneficiary_id    String   @db.VarChar(100)
+  status            String   @default("Active") @db.VarChar(10)
+  ins_date          DateTime @db.Date
+
+   @@map("tbl_parivahan")
+}
+
+
+model tblusers {
+  user_id              Int      @id @default(autoincrement())
+  category_id          Int
+  name                 String   @db.VarChar(255)
+  contact_no           String   @db.VarChar(13)
+  email                String   @db.VarChar(100)
+  address              String   @db.VarChar(255)
+  username             String   @db.VarChar(50)
+  password             String   @db.VarChar(50)
+  status               String   @default("Active") @db.VarChar(10)
+  ins_date_time        DateTime
+  update_date_time     DateTime
+  school_id            Int
+  standard_id          Int
+  hostel_id            Int
+  central_kitchan_id   Int
+  civil_id             Int
+  dept_id              Int
+  lipik_id             Int
+  officer_id           Int
+  apo_id               Int
+  cluster_id           Int
+  padnam_id            Int
+
+  @@map("tbl_users") // Maps the model to the original table name
+}
+
+
+model tblstudentsscholarship {
+  student_id                  Int       @id @default(autoincrement())
+  serial_number               String?   @db.VarChar(220)
+  uid                         String?   @db.VarChar(50)
+  gr_no                       String?   @db.VarChar(20)
+  date_of_admision           DateTime? @db.Date
+  year_add                    String?   @db.VarChar(20)
+  school_id                   Int?
+  admited_in_std              Int?
+  current_std                 Int?
+  division                    String?   @db.VarChar(100)
+  first_name                  String?   @db.VarChar(100)
+  middle_name                 String?   @db.VarChar(100)
+  last_name                   String?   @db.VarChar(100)
+  date_of_birth               DateTime? @db.Date
+  place_of_birth              String    @db.VarChar(100)
+  gender                      String?   @db.VarChar(10)
+  height                      String?   @db.VarChar(20)
+  weight                      String?   @db.VarChar(20)
+  mother_name                 String?   @db.VarChar(100)
+  religion                    String?   @db.VarChar(20)
+  lang_id                     Int?
+  cast                        String    @db.VarChar(20)
+  address                     String?   @db.VarChar(255)
+  contact_no                  String?   @db.VarChar(15)
+  full_name                   String?   @db.VarChar(100)
+  user_id                     Int?
+  cluster_id                  Int?
+  dropout                     String    @default("Not") @db.VarChar(10)
+  dropout_date_time           DateTime?
+  status                      String    @default("Active") @db.VarChar(10)
+  ins_date_time               DateTime?
+  update_date_time            DateTime?
+  students_id_saral          String?   @db.VarChar(50)
+  type_of_students            String?   @db.VarChar(30)
+  saral_id                    String?   @db.VarChar(50)
+  date_leave                  DateTime? @db.Date
+  remarks                     String?   @db.VarChar(255)
+  stream                      String?   @db.VarChar(100)
+  profile_photo               String?   @db.VarChar(255)
+  photo_update_date_time      DateTime?
+  sickle_cell                 String?   @db.VarChar(150)
+  aadhaar                     String?   @db.VarChar(20)
+  sickle_report               String?   @db.VarChar(20)
+  scholarship_name            String?   @db.VarChar(20)
+  student_scholarship_id       String?   @db.VarChar(50)
+   @@map("tbl_students_scholarship")
+}
+
+
+model tblcaste {
+  caste_id   Int    @id @default(autoincrement())
+  caste_name String
+  status     String @default("Active")
+
+  @@map("tbl_caste") // Maps the model to the existing table name
+}
+
+model tbl_members {
+  member_id          Int      @id @default(autoincrement())
+  beneficiary_id     Int
+  surname            String   @db.VarChar(50)
+  firstname          String   @db.VarChar(50)
+  middlename         String   @db.VarChar(50)
+  fullname           String   @db.VarChar(100)
+  designation        String   @db.VarChar(20)
+  caste_id           Int
+  beneficiary_type   String   @db.VarChar(20)
+  ration_no          String   @db.VarChar(50)
+  aadhar_no          String   @db.VarChar(50)
+  mobile_no          String   @db.VarChar(10)
+  status             String   @default("Active") @db.VarChar(10)
+  ins_date_time      DateTime @default(now())
+  update_date_time   DateTime?
+}
+
+
+model tbl_bankmaster {
+  id        Int     @id @default(autoincrement())
+  talukaid  Int?    
+  bank_name String? @db.VarChar(25)
+  ifsc_code String? @db.VarChar(20)
+    status    String? @db.VarChar(10)
+}
+
+model tbl_slider {
+  slider_id   Int     @id @default(autoincrement())
+  slider_name String  @db.VarChar(255)
+  slider_img  String  @db.VarChar(255)
+  img_type    String  @db.VarChar(50)
+}
+
+
+model TblSports {
+  sports_id        Int      @id @default(autoincrement())
+  sports_name      String   @db.VarChar(30)
+  status           String   @default("Active") @db.VarChar(10)
+  ins_date_time    DateTime @db.DateTime
+  update_date_time DateTime? @db.DateTime
+  icon             String   @db.VarChar(255)
+  serial_number    Int      @db.Int
+
+  @@map("tbl_sports")
+}
+
+model SportsInfo {
+ sports_info_id   Int      @id @default(autoincrement())
+  sports_record    String   @db.Text
+  status           String   @default("Active") @db.VarChar(10)
+  ins_date_time    DateTime @db.DateTime
+  update_date_time DateTime? @db.DateTime
+  @@map(name: "tbl_sports_info_new")
+}
+
+model tbl_achivments {
+  achivment_id      Int      @id @default(autoincrement())
+  sports_id        Int
+  student_id       Int
+  standard_id      Int
+  school_id        Int
+  rank             String  @db.VarChar(20)
+  competition_date DateTime
+  levels           String  @db.VarChar(100)
+  details          String  @db.VarChar(255)
+  player_time      String  @db.VarChar(200)
+  winning_time     String  @db.VarChar(200)
+  state_level      String  @db.VarChar(200)
+  status           String  @default("Active") @db.VarChar(10)
+  ins_date_time    DateTime
+  update_date_time DateTime?
+
+}
+
+
+model tbl_evaluation {
+  evaluation_id      Int      @id @default(autoincrement())
+  parivahan_id      Int
+  beneficiary_id    Int
+  photo            String   @db.VarChar(100)
+  remarks          String   @db.Text
+  other_remraks    String   @db.VarChar(200)
+  lat              String   @db.VarChar(100)
+  log              String   @db.VarChar(100)
+  address          String   @db.VarChar(100)
+  yojana_id        Int
+  yojana_year_id   Int
+  sub_category_id  Int
+  category_id      Int
+  yojana_type      Int
+  ins_date_time    DateTime
+  update_date_time DateTime?
+  evaluation_status String  @default("Pending") @db.VarChar(10)
+  status           String  @default("Active") @db.VarChar(10)
+  
+  @@map("tbl_evaluation")
+}
+
+
+model tbl_evaluation_amount {
+  id             Int      @id @default(autoincrement())
+  beneficiary_id Int
+  evaluation_id  Int
+  amount         Decimal  @db.Decimal(10, 2)
+  ins_date       DateTime @db.Date
+  ins_date_time  DateTime
+  verification   String   @default("No") @db.VarChar(10)
+  status         String   @default("Active") @db.VarChar(10)
+
+  @@map("tbl_evaluation_amount")
+}
+
+
+
+model tbl_hostels {
+  hostel_id                Int     @id @default(autoincrement())
+  aapar_aayukt             String
+  prakalp                  String
+  hostel_name              String  @db.VarChar(255)
+  hostel_type              String  @db.VarChar(50)
+  address                  String  @db.VarChar(255)
+  cluster_id               Int
+  taluka                   String  @db.VarChar(50)
+  dist                     String  @db.VarChar(50)
+  warden_name              String  @db.VarChar(100)
+  hostel_darja             String  @db.VarChar(100)
+  hostel_manjur_shkamata   String  @db.VarChar(100)
+  hostel_imarat_shkamata   String  @db.VarChar(100)
+  contact_no               String  @db.Text
+  email                    String  @db.VarChar(80)
+  status                   String  @default("Active") @db.VarChar(10)
+  image_urls               String  @db.Text
+}
+
+model missionshikari {
+  id               Int     @id @default(autoincrement())
+  designation      String? @db.VarChar(10)
+  studentname     String? @db.VarChar(35)
+  schoolhosteltype String? @db.VarChar(30)
+  schoolhostelname String? @db.VarChar(30)
+  subject         String? @db.VarChar(35)
+  testdate        String? @db.VarChar(30)
+  totalmarks      String? @db.VarChar(10)
+  obtainmarks     String? @db.VarChar(20)
+  percentage      String? @db.VarChar(20)
+  aadharcard      String? @db.VarChar(13)
+  parentsnumber      String? @db.VarChar(12)
+  imgupload      String? @db.VarChar(255)
+}
+
+
+model Document {
+  document_id     Int     @id @default(autoincrement())
+  document_name    String?  @db.VarChar(30)
+  status           String?  @db.VarChar(10)
+  ins_date_time    DateTime @default(now())
+  update_date_time DateTime @updatedAt
+
+  @@map("document")
+}
+
+
+
+model DocumentYojana {
+  document_id     Int     @id @default(autoincrement())
+  category_id      Int?    // Nullable
+  subcategory_id   Int?    // Nullable
+  yojana_id        Int?    // Nullable
+  documents         String? @db.VarChar(20) // Nullable
+  status           String? @db.VarChar(10) // Nullable
+  ins_date_time    DateTime @default(now())
+  update_date_time DateTime @updatedAt
+
+  @@map("document_yojana")
+
+ 
+}

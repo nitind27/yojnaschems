@@ -1,0 +1,6 @@
+input[type="checkbox"]:disabled {
+    background-color: #585858; /* Light gray */
+    border: 1px solid #a9a9a9; /* Dark gray border */
+    cursor: not-allowed; /* Show not-allowed cursor */
+  }
+  

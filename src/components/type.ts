@@ -646,6 +646,16 @@ export type DocumentYojana = {
   category_id?: number | null;
   subcategory_id?: number | null;
   documents?: string | null;
+  ruleset?: string | null;
+  procedurebenefits?: string | null;
+  Eligibility?: string | null;
+  Approvedapplication?: string | null;
+  Implementationmechanism?: string | null;
+  applicationcost?: string | null;
+  applicationavailable?: string | null;
+  payafee?: string | null;
+  Expectedduration?: string | null;
+  
   yojana_id?: number | null;
   year_id?: string | null;
   yojna_name?: string | null;

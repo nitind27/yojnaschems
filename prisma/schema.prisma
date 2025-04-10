@@ -766,6 +766,15 @@ model DocumentYojana {
   year_id         String? @db.VarChar(5) // Nullable
   yojna_name         String? @db.VarChar(5) // Nullable
   documents         String? @db.VarChar(20) // Nullable
+  ruleset         String? @db.VarChar(255) // Nullable
+  procedurebenefits         String? @db.VarChar(255) // Nullable
+  Eligibility         String? @db.VarChar(255) // Nullable
+  Approvedapplication         String? @db.VarChar(255) // Nullable
+  Implementationmechanism         String? @db.VarChar(255) // Nullable
+  applicationcost         String? @db.VarChar(255) // Nullable
+  applicationavailable         String? @db.VarChar(255) // Nullable
+  payafee         String? @db.VarChar(255) // Nullable
+  Expectedduration         String? @db.VarChar(255) // Nullable
   status           String? @db.VarChar(10) // Nullable
   ins_date_time    DateTime @default(now())
   update_date_time DateTime @updatedAt

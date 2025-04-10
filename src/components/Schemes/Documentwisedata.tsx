@@ -35,6 +35,17 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
     const [yojnatyp, setYojnatype] = useState("");
     const [yojnname, setyojnaname] = useState("");
 
+    const [ruleset, setRuleset] = useState("");
+    const [procedurebenefits, setprocedurebenefits] = useState("");
+    const [Eligibility, setEligibility] = useState("");
+    const [Approvedapplication, setApprovedapplication] = useState("");
+
+    const [Implementationmechanism, setImplementationmechanism] = useState("");
+    const [applicationcost, setapplicationcost] = useState("");
+    const [applicationavailable, setapplicationavailable] = useState("");
+    const [payafee, setpayafee] = useState("");
+    const [Expectedduration, setExpectedduration] = useState("");
+
     const [Document, setDocument] = useState<string[]>([]);
 
     const router = useRouter();
@@ -100,6 +111,16 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
             yojana_name: master.yojana_id,
             yojana_nameid: yojnatypes[master.yojana_id],
             status: master.status,
+
+            ruleset: master.ruleset,
+            procedurebenefits: master.procedurebenefits,
+            Eligibility: master.Eligibility,
+            Approvedapplication: master.Approvedapplication,
+            Implementationmechanism: master.Implementationmechanism,
+            applicationcost: master.applicationcost,
+            applicationavailable: master.applicationavailable,
+            payafee: master.payafee,
+            Expectedduration: master.Expectedduration,
         }))
         .reverse(); // Reverse the order to show the last added items first
 
@@ -138,6 +159,54 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
             accessorKey: "yojnaname",
             header: `Yojna Type`,
         },
+
+
+        {
+            accessorKey: "ruleset",
+            header: `कायदे / नियम / शासन निर्णय`,
+        },
+        
+        {
+            accessorKey: "procedurebenefits",
+            header: `थोडक्यात कार्यपद्धती व लाभ`,
+        },
+        
+        {
+            accessorKey: "Eligibility",
+            header: `पात्रता / निकष`,
+        },
+        
+        {
+            accessorKey: "Approvedapplication",
+            header: `अर्जाचा मान्यता प्राप्त नमुना`,
+        },
+        
+        {
+            accessorKey: "Implementationmechanism",
+            header: `अंमलबजावणी यंत्रणा`,
+        },
+        
+        {
+            accessorKey: "applicationcost",
+            header: `अर्जाची किंमत असल्यास किती?`,
+        },
+        
+        {
+            accessorKey: "applicationavailable",
+            header: `अर्ज कुठे उपलब्ध आहे`,
+        },
+        
+        {
+            accessorKey: "payafee",
+            header: `शुल्क भरावे लागते काय? किती`,
+        },
+        
+        {
+            accessorKey: "Expectedduration",
+            header: `अपेक्षित कालावधी`,
+        },
+        
+
         {
             accessorKey: "documents",
             header: `Documents`,
@@ -235,6 +304,16 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
                 year_id: yojnayear,
                 yojna_name: yojnname,
 
+                ruleset: ruleset,
+                procedurebenefits: procedurebenefits,
+                Eligibility: Eligibility,
+                Approvedapplication: Approvedapplication,
+                Implementationmechanism: Implementationmechanism,
+                applicationcost: applicationcost,
+                applicationavailable: applicationavailable,
+                payafee: payafee,
+                Expectedduration: Expectedduration,
+
                 documents: !Array.isArray(Document) ? documentdataofwise.map((data: any) => data.value).join() : Document.map((data: any) => data.value).join(),
 
 
@@ -269,8 +348,8 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
                                 : cluster
                         )
                     );
-                window.location.reload()
-                  
+                    window.location.reload()
+
                     toast.success("Cluster updated successfully!");
                 } else {
                     const createdData = await response.json();
@@ -310,6 +389,17 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
         setYojnaYear(yojna.year_id)
         setyojnaname(yojna.yojna_name)
         setYojnatype(yojna.yojana_name)
+
+        setRuleset(yojna.ruleset)
+        setprocedurebenefits(yojna.procedurebenefits)
+        setEligibility(yojna.Eligibility)
+        setApprovedapplication(yojna.Approvedapplication)
+        setImplementationmechanism(yojna.Implementationmechanism)
+        setapplicationcost(yojna.applicationcost)
+        setapplicationavailable(yojna.applicationavailable  )
+        setpayafee(yojna.payafee)
+        setExpectedduration(yojna.Expectedduration)
+ 
 
         setDocument(yojna.documentdataid)
         handleShowPrint();
@@ -445,8 +535,38 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
                                 })),
                             placeholder: `${t("yojnaname")}`, // Optional placeholder for select input
                         },
+
+
+
                         {
-                            label: `Document`,
+                            label: `कायदे / नियम / शासन निर्णय`,
+                            value: ruleset,
+                            className: "col-12",
+                            type: "text",
+                            placeholder: `कायदे / नियम / शासन निर्णय`,
+                            required: true,
+                            onChange: (e: any) => setRuleset(e.target.value),
+                        },
+                        {
+                            label: `थोडक्यात कार्यपद्धती व लाभ`,
+                            value: procedurebenefits,
+                            className: "col-12",
+                            type: "text",
+                            placeholder: `थोडक्यात कार्यपद्धती व लाभ`,
+                            required: true,
+                            onChange: (e: any) => setprocedurebenefits(e.target.value),
+                        },
+                        {
+                            label: `पात्रता / निकष`,
+                            value: Eligibility,
+                            type: "text",
+                            className: "col-12",
+                            placeholder: `पात्रता / निकष`,
+                            required: true,
+                            onChange: (e: any) => setEligibility(e.target.value),
+                        },
+                        {
+                            label: `कोणते कागदपत्रे जोडायची`,
                             value: updateClusterId ? documentdatastate
                                 .filter((data: any) => Document.includes(data.document_id))
                                 .map((data) => ({
@@ -454,7 +574,7 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
                                     value: data.document_id,
                                 })) : Document,
                             type: "selectcustom",
-                            placeholder: `${t("amount")}`,
+                            placeholder: `कोणते कागदपत्रे जोडायची`,
                             className: "col-12",
                             options: Documentdatas.map((category: Document) => ({
                                 value: category.document_id, // Assuming sub_category_id is the unique identifier for subcategories
@@ -463,6 +583,62 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
                             required: true,
                             onChange: (e: any) => setDocument(e.target.value),
                         },
+                        {
+                            label: `अर्जाचा मान्यता प्राप्त नमुना`,
+                            value: Approvedapplication,
+                            type: "text",
+                            className: "col-12",
+                            placeholder: `अर्जाचा मान्यता प्राप्त नमुना`,
+                            required: true,
+                            onChange: (e: any) => setApprovedapplication(e.target.value),
+                        },
+
+                        {
+                            label: `अंमलबजावणी यंत्रणा`,
+                            value: Implementationmechanism,
+                            className: "col-12",
+                            type: "text",
+                            placeholder: `अंमलबजावणी यंत्रणा`,
+                            required: true,
+                            onChange: (e: any) => setImplementationmechanism(e.target.value),
+                        },
+                        {
+                            label: `अर्जाची किंमत असल्यास किती?`,
+                            value: applicationcost,
+                            type: "text",
+                            className: "col-12",
+                            placeholder: `अर्जाची किंमत असल्यास किती?`,
+                            required: true,
+                            onChange: (e: any) => setapplicationcost(e.target.value),
+                        },
+                        {
+                            label: `अर्ज कुठे उपलब्ध आहे`,
+                            value: applicationavailable,
+                            type: "text",
+                            className: "col-4",
+                            placeholder: `अर्ज कुठे उपलब्ध आहे`,
+                            required: true,
+                            onChange: (e: any) => setapplicationavailable(e.target.value),
+                        },
+                        {
+                            label: `शुल्क भरावे लागते काय? किती`,
+                            value: payafee,
+                            type: "text",
+                            className: "col-4",
+                            placeholder: `अर्ज कुठे उपलब्ध आहे`,
+                            required: true,
+                            onChange: (e: any) => setpayafee(e.target.value),
+                        },
+                        {
+                            label: `अपेक्षित कालावधी`,
+                            value: Expectedduration,
+                            type: "text",
+                            className: "col-4",
+                            placeholder: `अर्ज कुठे उपलब्ध आहे`,
+                            required: true,
+                            onChange: (e: any) => setExpectedduration(e.target.value),
+                        },
+
 
 
                     ],

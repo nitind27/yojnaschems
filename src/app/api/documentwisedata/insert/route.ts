@@ -5,7 +5,7 @@ export async function POST(req: Request) {
   try {
     // Get the cluster_name from the request body
     const body = await req.json();
-    const { category_id, subcategory_id, yojana_id, year_id, yojna_name, documents } = body;
+    const { category_id, subcategory_id, yojana_id, year_id, yojna_name, documents, ruleset, procedurebenefits, Eligibility, Approvedapplication, Implementationmechanism, applicationcost, applicationavailable, payafee, Expectedduration } = body;
 
     const categoryid = Number(category_id);
     const subcategoryid = Number(subcategory_id);
@@ -20,6 +20,15 @@ export async function POST(req: Request) {
         year_id: year_id,
         yojna_name: yojna_name,
         documents: documents,
+        ruleset: ruleset,
+        procedurebenefits: procedurebenefits,
+        Eligibility: Eligibility,
+        Approvedapplication: Approvedapplication,
+        Implementationmechanism: Implementationmechanism,
+        applicationcost: applicationcost,
+        applicationavailable: applicationavailable,
+        payafee: payafee,
+        Expectedduration: Expectedduration,
         status: "Active",
         update_date_time: new Date()
       },

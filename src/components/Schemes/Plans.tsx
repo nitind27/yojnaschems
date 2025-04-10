@@ -319,6 +319,7 @@ const Plans = ({ initialcategoryData, YojnaYear, Bankdata, category, yojnatype, 
 
             <CustomModal
                 show={showPrintModal}
+                size="xl"
                 handleClose={handleClosePrint}
                 handleSubmit={handleSubmit}
                 title={updateClusterId ? `${t("updatepage")}` : `${t("insertpage")}`}

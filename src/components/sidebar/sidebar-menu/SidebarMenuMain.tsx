@@ -76,6 +76,14 @@ const SidebarMenuMain = () => {
             } // Store path on click
           />
           <SidebarMenuItem
+            to={`/${localActive}/manage/yearadd`}
+            title={t("yearadd")}
+            hasBullet={true}
+            onClick={() =>
+              handleItemClick(`/${localActive}/manage/grampanchayat`)
+            } // Store path on click
+          />
+          <SidebarMenuItem
             to={`/${localActive}/manage/mahsulgaav`}
             title={t("Mahsulgaav")}
             hasBullet={true}

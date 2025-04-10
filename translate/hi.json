@@ -23,7 +23,7 @@
   "Sidebar": {
     "dashboard": "डैशबोर्ड",
     "clustermenu": "क्लस्टर",
-    "document":"दस्तावेज़",
+    "document": "दस्तावेज़",
     "manage": "प्रबंधित करें",
     "townmenu": "तालुका",
     "GramPanchayat": "ग्राम पंचायत",
@@ -32,6 +32,7 @@
     "Schemstitle": "योजना वार दस्तावेज़",
     "student": "छात्र",
     "suvidha": "सुविधा",
+    "year": "वर्ष",
     "pratinidhi": "प्रतिनिधि",
     "vaparkarta": "वापरकर्ता",
     "Bank": "बैंक",
@@ -597,5 +598,16 @@
     "Action": "कार्यवाई",
     "Active": "सक्रिय",
     "Deactive": "मिटाना"
+  },
+  "yojnayear": {
+    "title": "मिशन सिखर",
+    "SrNo": "क्र.सं.",
+    "year": "वर्ष",
+    "Status": "स्थिति",
+    "Action": "कार्रवाई",
+    "submit": "जोड़ें",
+    "editsubmit": "संपादित करें",
+    "Active": "सक्रिय",
+    "Deactive": "निष्क्रिय करें"
   }
 }

@@ -7,10 +7,6 @@ export async function POST(req: Request) {
         const body = await req.json();
         const { category_id, sub_category_name, yojana_year_id, bank_id, amount } = body;
 
-        // Check if cluster_name is provided
-        if (!category_id || !sub_category_name || !yojana_year_id || !bank_id || !amount) {
-            return NextResponse.json({ error: 'All filed required' }, { status: 400 });
-        }
 
         const categoryid = parseInt(category_id, 10);
         const bankid = parseInt(bank_id, 10);
@@ -20,9 +16,9 @@ export async function POST(req: Request) {
             data: {
                 category_id: categoryid,
                 sub_category_name: sub_category_name,
-                yojana_year_id: yojanayearid,
-                bank_id: bankid,
-                amount: amount,
+                yojana_year_id: 0,
+                bank_id: 0,
+                amount: "",
                 status: "Active", // Add default status if needed
                 created_at: new Date(), // Set to current date/time
                 updated_at: new Date(),  // Set to current date/time

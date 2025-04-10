@@ -68,10 +68,10 @@ const SubCategorys = ({ initialcategoryData, YojnaYear, Bankdata, category }: Pr
         .reverse(); // Reverse the order to show the last added items first
 
     const columns = [
-       {
+        {
             accessorKey: "serial_number",
             header: () => (
-                <div style={{ fontWeight: 'bold',padding: '5px' }}>
+                <div style={{ fontWeight: 'bold', padding: '5px' }}>
                     {t("SrNo")}
                 </div>
             ),
@@ -89,27 +89,13 @@ const SubCategorys = ({ initialcategoryData, YojnaYear, Bankdata, category }: Pr
             accessorKey: "sub_category_name",
             header: `${t("subcategoryname")}`,
         },
-        {
-            accessorKey: "yojana_year_id",
-            header: `${t("year")}`,
-        },
-        {
-            accessorKey: "bank_id",
-            header: `Bankname`,
-        },
-        {
-            accessorKey: "amount",
-            header: `${t("amount")}`,
-        },
+
         {
             accessorKey: "status",
             header: `${t("Status")}`,
         },
 
-        {
-            accessorKey: "for_app",
-            header: `${t("appyojna")}`,
-        },
+
         {
             accessorKey: "actions",
             header: `${t("Action")}`,
@@ -204,9 +190,9 @@ const SubCategorys = ({ initialcategoryData, YojnaYear, Bankdata, category }: Pr
             const requestBody = {
                 category_id: categoryName,
                 sub_category_name: subcategoryName,
-                yojana_year_id: yojnayear,
-                bank_id: bankname,
-                amount: amount,
+                yojana_year_id: "",
+                bank_id: "",
+                amount: "",
 
 
                 ...(updateClusterId && { sub_category_id: updateClusterId }),
@@ -268,7 +254,7 @@ const SubCategorys = ({ initialcategoryData, YojnaYear, Bankdata, category }: Pr
         setBankname("");
         setError("");
         setAmount("");
-        
+
     }
     const handleClosePrint = () => {
         reset();
@@ -309,7 +295,7 @@ const SubCategorys = ({ initialcategoryData, YojnaYear, Bankdata, category }: Pr
                         {
                             label: `${t("categoryname")}`,
                             value: categoryName,
-                            onChange: (e : any) => setCategoryName(e.target.value),
+                            onChange: (e: any) => setCategoryName(e.target.value),
                             type: "select",
                             options: category.map((category: Categorys) => ({
                                 value: category.category_id,
@@ -323,41 +309,9 @@ const SubCategorys = ({ initialcategoryData, YojnaYear, Bankdata, category }: Pr
                             type: "text",
                             placeholder: `${t("subcategoryname")}`,
 
-                            onChange: (e : any) => setSubCategoryName(e.target.value),
-                        },
-                        {
-                            label: `${t("year")}`,
-                            value: yojnayear,
-                            onChange: (e : any) => setYojnaYear(e.target.value),
-                            type: "select",
-                            options: YojnaYear.map((year: YojanaYear) => ({
-                                value: year.yojana_year_id,
-                                label: year.yojana_year,
-                            })),
-                            placeholder: `${t("year")}`, // Optional placeholder for select input
+                            onChange: (e: any) => setSubCategoryName(e.target.value),
                         },
 
-
-                        {
-                            label: `${t("Bankname")}`,
-                            value: bankname,
-                            onChange: (e : any) => setBankname(e.target.value),
-                            type: "select",
-                            options: Bankdata.map((Bank: Bank) => ({
-                                value: Bank.id,
-                                label: Bank.name,
-                            })),
-                            placeholder: `${t("Bankname")}`, // Optional placeholder for select input
-                        },
-                        {
-                            label: `${t("amount")}`,
-                            value: amount,
-                            required: true,
-                            type: "text",
-                            placeholder: `${t("amount")}`,
-
-                            onChange: (e : any) => setAmount(e.target.value),
-                        },
                     ],
                     error,
                 }}

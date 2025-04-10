@@ -172,7 +172,7 @@ model Bank {
 }
 
 model YojanaYear {
-  yojana_year_id   Int     @id @db.Int
+  yojana_year_id   Int     @id @default(autoincrement()) @db.Int
   yojana_year   String  @db.VarChar(20)
   is_delete     String   @default("No") @db.VarChar(20)
   year_status   String   @db.VarChar(10)

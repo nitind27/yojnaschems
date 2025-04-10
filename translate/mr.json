@@ -11,19 +11,19 @@
     "Status": "स्थिती",
     "AddTime": "जोडण्याचा वेळ",
     "Action": "कार्य",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "status": "सक्रिय",
     "page": "पृष्ठ",
     "insertpage": "क्लस्टर नाव भरा",
     "updatepage": "क्लस्टर नाव अपडेट करा",
     "enterclustername": "क्लस्टर नाव प्रविष्ट करा",
     "submit": "सबमिट करा",
-    "editsubmit": "संपादित करा"
+    "editsubmit": "बदल करा"
   },
   "Sidebar": {
     "dashboard": "डॅशबोर्ड",
     "clustermenu": "क्लस्टर",
-    "document":"दस्तऐवज",
+    "document": "दस्तऐवज",
     "manage": "व्यवस्थापन",
     "townmenu": "तालुका",
     "GramPanchayat": "ग्रामपंचायत",
@@ -31,6 +31,7 @@
     "Schemstitle": "योजना वार दस्तळे",
     "school": "शाळा",
     "student": "विद्यार्थी",
+    "year": "वर्ष",
     "suvidha": "सुविधा",
     "pratinidhi": "प्रतिनिधी",
     "vaparkarta": "वापरकर्ता",
@@ -72,14 +73,14 @@
     "marathiname": "मराठी (नाव)",
     "Status": "स्थिती",
     "Action": "क्रिया",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "तालुका नाव भरा",
     "updatepage": "तालुका नाव अपडेट करा",
     "entertalukaname": "तालुका नाव प्रविष्ट करा",
     "submit": "सबमिट करा",
-    "editsubmit": "संपादित करा"
+    "editsubmit": "बदल करा"
   },
   "Grampanchayat": {
     "title": "ग्रामपंचायत व्यवस्थापन",
@@ -91,7 +92,7 @@
     "population": "लोकसंख्या",
     "status": "स्थिती",
     "Action": "कार्यवाही",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "ग्रामपंचायत माहिती भरा",
@@ -101,7 +102,7 @@
     "selecttaluka": "तालुका निवडा",
     "enterpopulation": "लोकसंख्या भरा",
     "submit": "सबमिट करा",
-    "editsubmit": "संपादित करा"
+    "editsubmit": "बदल करा"
   },
   "MahasulGaav": {
     "title": "महसूल गाव",
@@ -116,7 +117,7 @@
     "villagetype": "गावाचा प्रकार",
     "status": "स्थिती",
     "Action": "क्रिया",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "महसूल गाव",
@@ -130,7 +131,7 @@
     "entertribalepopulation": "आदिवासी लोकसंख्या प्रविष्ट करा",
     "enterincome": "उत्पन्न प्रविष्ट करा",
     "submit": "जोडा",
-    "editsubmit": "संपादित करा"
+    "editsubmit": "बदल करा"
   },
   "parivahan": {
     "SrNo": "क्र. सं.",
@@ -142,7 +143,7 @@
     "yojnaname": "योजना नाव",
     "Status": "स्थिती",
     "Action": "कृती",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "योजना",
@@ -150,7 +151,7 @@
     "insertpageapp": "स्थळ पाहणे परिवहन माहिती",
     "updatepageapp": "योजना ऍप",
     "submit": "जोडा",
-    "editsubmit": "संपादित करा",
+    "editsubmit": "बदल करा",
     "beneficiary": "लाभार्थी नाव",
     "AmountPaid": "दिलेली रक्कम",
     "name": "नाव",
@@ -194,7 +195,7 @@
     "addtime": "वेळ जोडा",
     "status": "स्थिती",
     "Action": "क्रिया",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "शाळा",
@@ -218,7 +219,7 @@
     "enterstreeemail": "महिला अधीक्षक ईमेल आयडी",
     "image_urls": "प्रतिमा",
     "submit": "जोडा",
-    "editsubmit": "संपादित करा"
+    "editsubmit": "बदल करा"
   },
   "Suvidha": {
     "title": "सुविधा माहिती",
@@ -227,14 +228,14 @@
     "suvidhaname": "सुविधेचे नाव",
     "status": "स्थिती",
     "Action": "क्रिया",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "सुविधा माहिती भरा",
     "updatepage": "सुविधा माहिती अद्यतनित करा",
     "entersuvidhaname": "सुविधेचे नाव भरा",
     "submit": "सबमिट करा",
-    "editsubmit": "संपादित करा"
+    "editsubmit": "बदल करा"
   },
   "Representative": {
     "title": "प्रतिनिधी माहिती",
@@ -243,7 +244,7 @@
     "pratinidhi": "प्रतिनिधी",
     "status": "स्थिती",
     "Action": "क्रिया",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "प्रतिनिधी माहिती भरा",
@@ -264,7 +265,7 @@
     "padname": "पॅडचे नाव",
     "status": "स्थिती",
     "Action": "कार्यवाही",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "सुपरवायझर तपशील भरा",
@@ -288,7 +289,7 @@
     "status": "स्थिती",
     "addtime": "जोडण्याचा वेळ",
     "Action": "क्रिया",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "बँक तपशील भरा",
@@ -308,7 +309,7 @@
     "status": "स्थिती",
     "addtime": "जोडण्याचा वेळ",
     "Action": "क्रिया",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "बॅलन्स तपशील भरा",
@@ -332,7 +333,7 @@
     "inserted": "घातलेले",
     "updated": "अपडेट केलेले",
     "Action": "क्रिया",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "धन वितरण घाला",
@@ -361,7 +362,7 @@
     "img": "प्रतिमा",
     "Status": "स्थिती",
     "Action": "क्रिया",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "सूचना",
@@ -377,13 +378,13 @@
     "appyojna": "अॅप योजना",
     "Status": "स्थिती",
     "Action": "क्रिया",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "श्रेणी",
     "updatepage": "श्रेणी",
     "submit": "जोडा",
-    "editsubmit": "संपादित करा"
+    "editsubmit": "बदल करा"
   },
   "Subcategory": {
     "title": "उपश्रेणी",
@@ -397,13 +398,13 @@
     "amount": "रक्कम",
     "Action": "कार्यवाही",
     "Status": "स्थिती",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "उपश्रेणी",
     "updatepage": "उपश्रेणी",
     "submit": "जोडा",
-    "editsubmit": "संपादित करा"
+    "editsubmit": "बदल करा"
   },
   "Yojnatype": {
     "title": "योजना प्रकार",
@@ -412,7 +413,7 @@
     "categoryname": "श्रेणी",
     "subcategoryname": "उप श्रेणी",
     "yojnatype": "योजना प्रकार",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Status": "स्थिती",
     "Action": "कार्यवाही",
     "Active": "सक्रिय",
@@ -420,7 +421,7 @@
     "insertpage": "योजना प्रकार",
     "updatepage": "योजना प्रकार",
     "submit": "जोडा",
-    "editsubmit": "संपादित करा"
+    "editsubmit": "बदल करा"
   },
   "Plans": {
     "title": "योजना",
@@ -435,7 +436,7 @@
     "amount": "रक्कम",
     "Status": "स्थिती",
     "Action": "कार्यवाही",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "योजना",
@@ -443,7 +444,7 @@
     "insertpageapp": "योजना अॅप",
     "updatepageapp": "योजना अॅप",
     "submit": "जोडा",
-    "editsubmit": "संपादित करा"
+    "editsubmit": "बदल करा"
   },
   "beneficiary": {
     "title": "लाभार्थी",
@@ -480,7 +481,7 @@
     "Status": "स्थिती",
     "Organization": "संस्था",
     "Action": "कार्यवाही",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "लाभार्थी",
@@ -488,7 +489,7 @@
     "insertpageapp": "योजना अॅप",
     "updatepageapp": "योजना अॅप",
     "submit": "जोडा",
-    "editsubmit": "संपादित करा",
+    "editsubmit": "बदल करा",
     "firstname": "पहिले नाव",
     "surname": "आडनाव",
     "parentsname": "वडिलांचे नाव/पतीचे नाव"
@@ -512,14 +513,14 @@
     "sicklecell": "सिकलसेल तपासणी",
     "status": "स्थिती",
     "Action": "कृती",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "image_urls": "प्रतिमा",
     "Deactive": "निष्क्रिय",
     "insertpage": "विद्यार्थ्यांची माहिती",
     "updatepage": "विद्यार्थ्यांची माहिती",
     "submit": "जोडा",
-    "editsubmit": "संपादित करा"
+    "editsubmit": "बदल करा"
   },
   "workmaster": {
     "title": "काम मास्टर",
@@ -552,13 +553,13 @@
     "address": "पत्ता",
     "Status": "स्थिती",
     "Action": "क्रिया",
-    "edit": "संपादित करा",
+    "edit": "बदल करा",
     "Active": "सक्रिय",
     "Deactive": "निष्क्रिय",
     "insertpage": "काम मास्टर",
     "updatepage": "काम मास्टर",
     "submit": "जोडा",
-    "editsubmit": "संपादित करा"
+    "editsubmit": "बदल करा"
   },
   "Bankmaster": {
     "title": "बँक तपशील",
@@ -592,10 +593,21 @@
     "ObtainMarks": "प्राप्त गुण",
     "Percentage": "टक्केवारी",
     "submit": "जोडा",
-    "editsubmit": "संपादित करा",
+    "editsubmit": "बदल करा",
     "Status": "स्थिती",
     "Action": "कृती",
     "Active": "सक्रिय",
     "Deactive": "हटवा"
+  },
+  "yojnayear": {
+    "title": "मिशन सिखर",
+    "SrNo": "क्र.सं.",
+    "year": "वर्ष",
+    "Status": "स्थिती",
+    "Action": "कृती",
+    "submit": "जोडा",
+    "editsubmit": "बदल करा",
+    "Active": "सक्रिय",
+    "Deactive": "निष्क्रिय करा"
   }
 }

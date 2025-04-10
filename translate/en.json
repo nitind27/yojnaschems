@@ -23,7 +23,7 @@
   "Sidebar": {
     "dashboard": "Dashboard",
     "clustermenu": "Cluster",
-    "document":"Documents",
+    "document": "Documents",
     "manage": "Manage",
     "townmenu": "Taluka",
     "GramPanchayat": "Gram Panchayat",
@@ -43,6 +43,7 @@
     "Plan_type": "Schems Type",
     "Plan": "Schems",
     "BankMaster": "Bank Master",
+    "year": "Year",
     "App_plan": "App Plan",
     "Beneficiary": "Beneficiary",
     "Sightseeing_Transport": "Sightseeing Transport",
@@ -604,7 +605,17 @@
     "editsubmit": "Edit",
     "Status": "Status",
     "Action": "Action",
-   
+    "Active": "Active",
+    "Deactive": "Delete"
+  },
+  "yojnayear": {
+    "title": "Year",
+    "SrNo": " S.No",
+    "year": "Year",
+    "Status": "Status",
+    "Action": "Action",
+    "submit": "Add",
+    "editsubmit": "Edit",
     "Active": "Active",
     "Deactive": "Delete"
   }

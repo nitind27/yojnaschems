@@ -5,7 +5,7 @@ export async function PUT(req: Request) {
   try {
     // Get the updated data from request body
     const body = await req.json();
-    const { document_id, category_id, subcategory_id, yojana_id, documents } = body;
+    const { document_id, category_id, subcategory_id, yojana_id, year_id, yojna_name, documents } = body;
 
     if (!document_id) {
       return NextResponse.json({ error: "Missing ID for update." }, { status: 400 });
@@ -19,7 +19,9 @@ export async function PUT(req: Request) {
         category_id: Number(category_id),
         subcategory_id: Number(subcategory_id),
         yojana_id: Number(yojana_id),
-        documents: documents,
+        year_id: year_id,
+        yojna_name: yojna_name,
+          documents: documents,
         status: "Active", // You can also pass this from frontend if needed
         update_date_time: new Date(),
       },

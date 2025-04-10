@@ -23,10 +23,12 @@
   "Sidebar": {
     "dashboard": "डॅशबोर्ड",
     "clustermenu": "क्लस्टर",
+    "document":"दस्तऐवज",
     "manage": "व्यवस्थापन",
     "townmenu": "तालुका",
     "GramPanchayat": "ग्रामपंचायत",
     "Mahsulgaav": "महसूल गाव",
+    "Schemstitle": "योजना वार दस्तळे",
     "school": "शाळा",
     "student": "विद्यार्थी",
     "suvidha": "सुविधा",

@@ -59,10 +59,7 @@ const Category = ({ initialcategoryData }: Props) => {
       header: `${t("status")}`,
     },
 
-    {
-      accessorKey: "for_app",
-      header: `${t("appyojna")}`,
-    },
+
     {
       accessorKey: "actions",
       header: `${t("Action")}`,
@@ -156,7 +153,7 @@ const Category = ({ initialcategoryData }: Props) => {
       // Prepare the request body
       const requestBody = {
         category_name: categoryName,
-        for_app: appyojna,
+        for_app: "No",
 
         ...(updateClusterId && { category_id: updateClusterId }),
       };
@@ -258,19 +255,7 @@ const Category = ({ initialcategoryData }: Props) => {
 
               onChange: (e : any) => setCategoryName(e.target.value),
             },
-            {
-              label: `${t("appyojna")}`,
-              value: appyojna,
-              type: "select",
-              placeholder: `${t("appyojna")}`,
-
-              options: [
-                { label: "Yes", value: "Yes" },
-                { label: "No", value: "No" },
-
-              ],
-              onChange: (e : any) => setAppyojna(e.target.value),
-            },
+           
           ],
           error,
         }}

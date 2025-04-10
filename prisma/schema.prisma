@@ -763,6 +763,8 @@ model DocumentYojana {
   category_id      Int?    // Nullable
   subcategory_id   Int?    // Nullable
   yojana_id        Int?    // Nullable
+  year_id         String? @db.VarChar(5) // Nullable
+  yojna_name         String? @db.VarChar(5) // Nullable
   documents         String? @db.VarChar(20) // Nullable
   status           String? @db.VarChar(10) // Nullable
   ins_date_time    DateTime @default(now())

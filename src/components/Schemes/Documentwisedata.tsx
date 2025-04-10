@@ -34,6 +34,7 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
     const [yojnayear, setYojnaYear] = useState("");
     const [yojnatyp, setYojnatype] = useState("");
     const [yojnname, setyojnaname] = useState("");
+
     const [Document, setDocument] = useState<string[]>([]);
 
     const router = useRouter();
@@ -48,6 +49,10 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
     const confirm = createConfirmation(ConfirmationDialog);
     const yojna_year = YojnaYear.reduce((acc, year: YojanaYear) => {
         acc[year.yojana_year_id] = year.yojana_year; // Assuming taluka has id and name properties
+        return acc;
+    }, {} as Record<number, string>);
+    const yojnanames = yojnamaster.reduce((acc, year: YojanaMaster) => {
+        acc[year.yojana_id] = year.yojana_name; // Assuming taluka has id and name properties
         return acc;
     }, {} as Record<number, string>);
     const subcat = initialcategoryData.reduce((acc, subcat: SubCategory) => {
@@ -83,6 +88,10 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
             categoryid: master.category_id,
             subcategory_id: subcat[master.subcategory_id as any],
             subcategoryid: master.subcategory_id,
+            year_id: master.year_id,
+            yearid: yojna_year[master.year_id],
+            yojna_name: master.yojna_name,
+            yojnaname: yojnanames[master.yojna_name],
             documentdataid: master.documents,
             documents: documentdatastate.filter((data) => {
                 // Ensure both are of the same type (e.g., string)
@@ -119,6 +128,14 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
 
         {
             accessorKey: "yojana_nameid",
+            header: `Yojna Type`,
+        },
+        {
+            accessorKey: "yearid",
+            header: `Yojna Type`,
+        },
+        {
+            accessorKey: "yojnaname",
             header: `Yojna Type`,
         },
         {
@@ -215,6 +232,9 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
                 category_id: categoryName,
                 subcategory_id: subcategoryName,
                 yojana_id: yojnatyp,
+                year_id: yojnayear,
+                yojna_name: yojnname,
+
                 documents: !Array.isArray(Document) ? documentdataofwise.map((data: any) => data.value).join() : Document.map((data: any) => data.value).join(),
 
 
@@ -241,27 +261,16 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
                                     category_id: parseInt(categoryName),
                                     yojana_id: parseInt(yojnatyp),
                                     documents: Document as any,
-                                    yojana_name: yojnatyp,
-                                    documentdataid: Document as any, // Possibly redundant
-                                }
-                                : cluster
-                        )
-                    );
-                    setDocumentdatastate((prevData) =>
-                        prevData.map((cluster) =>
-                            cluster.document_id === updateClusterId
-                                ? {
-                                    ...cluster,
-
-                                    documents: Document as any,
+                                    year_id: yojnayear,
+                                    yojna_name: yojnname,
 
                                     documentdataid: Document as any, // Possibly redundant
                                 }
                                 : cluster
                         )
                     );
-
-                    window.location.reload();
+                window.location.reload()
+                  
                     toast.success("Cluster updated successfully!");
                 } else {
                     const createdData = await response.json();
@@ -298,7 +307,8 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
         setUpdateClusterId(yojna.document_id);
         setCategoryName(yojna.categoryid)
         setSubCategoryName(yojna.subcategoryid)
-
+        setYojnaYear(yojna.year_id)
+        setyojnaname(yojna.yojna_name)
         setYojnatype(yojna.yojana_name)
 
         setDocument(yojna.documentdataid)
@@ -347,6 +357,7 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
 
             <CustomModal
                 show={showPrintModal}
+                size="xl"
                 selectoption={[]}
                 handleClose={handleClosePrint}
                 handleSubmit={handleSubmit}
@@ -354,34 +365,56 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
                 formData={{
                     fields: [
                         {
-                            label: `${t("categoryname")}`,
+                            label: `${t('categoryname')}`,
                             value: categoryName,
+                            required: true,
                             onChange: (e: any) => setCategoryName(e.target.value),
                             type: "select",
                             options: category.map((category: Categorys) => ({
                                 value: category.category_id,
                                 label: category.category_name,
                             })),
-                            placeholder: `${t("categoryname")}`, // Optional placeholder for select input
+                            placeholder: `${t('categoryname')}`, // Optional placeholder for select input
                         },
                         {
-                            label: `${t("subcategoryname")}`, // Label for the select input
+                            label: `${t('subcategoryname')}`, // Label for the select input
                             value: subcategoryName, // Use state for the selected subcategory
                             onChange: (e: any) => setSubCategoryName(e.target.value), // Function to update selected subcategory
                             type: "select", // Type of input
-                            options: initialcategoryData
-                                .filter((category: SubCategory) => String(category.category_id) == categoryName) // Filter based on categoryName
-                                .map((category: SubCategory) => ({
-                                    value: category.sub_category_id, // Assuming sub_category_id is the unique identifier for subcategories
-                                    label: category.sub_category_name, // Display name for the select option
-                                })),
-                            placeholder: `${t("subcategoryname")}`, // Optional placeholder for select input
+                            options: [
+                                ...initialcategoryData
+                                    .filter((category: SubCategory) => String(category.category_id) == categoryName && category.status == "Active")
+                                    .map((category: SubCategory) => ({
+                                        value: category.sub_category_id, // Unique identifier for subcategories
+                                        label: `${category.sub_category_name}`, // Display name for the 
+                                    })),
+                                // {
+                                //     value: 'Oth', // Unique value for the create option
+                                //     label: 'Other', // Label for the create option, assuming you have a translation key for it
+                                // },
+
+                            ],
+                            placeholder: `${t('subcategoryname')}`, // Optional placeholder for select input
+                        }
+                        ,
+
+                        {
+                            label: `${t('year')}`,
+                            value: yojnayear,
+                            onChange: (e: any) => setYojnaYear(e.target.value),
+                            type: "select",
+                            options: YojnaYear.map((year: YojanaYear) => ({
+                                value: year.yojana_year_id,
+                                label: year.yojana_year,
+                            })),
+                            placeholder: `${t("year")}`, // Optional placeholder for select input
                         },
                         {
-                            label: `${t("yojnatype")}`,
+                            label: `${t('yojnatype')}`,
                             value: yojnatyp,
                             onChange: (e: any) => setYojnatype(e.target.value),
                             type: "select",
+
                             options: yojnatype
                                 .filter((type) =>
                                     String(type.sub_category_id) == subcategoryName &&
@@ -393,7 +426,25 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
                                 })),
                             placeholder: `${t("yojnatype")}`, // Optional placeholder for select input
                         },
-
+                        {
+                            label: `${t('yojnaname')}`,
+                            value: yojnname,
+                            onChange: (e: any) => setyojnaname(e.target.value),
+                            type: "select",
+                            className: 'col-12',
+                            options: yojnamaster
+                                .filter((type) =>
+                                    String(type.yojana_year_id) == yojnayear &&
+                                    String(type.yojana_type) == yojnatyp &&
+                                    String(type.category_id) == categoryName &&
+                                    String(type.sub_category_id) == subcategoryName
+                                )
+                                .map((yojna) => ({
+                                    value: yojna.yojana_id,
+                                    label: yojna.yojana_name,
+                                })),
+                            placeholder: `${t("yojnaname")}`, // Optional placeholder for select input
+                        },
                         {
                             label: `Document`,
                             value: updateClusterId ? documentdatastate
@@ -404,6 +455,7 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
                                 })) : Document,
                             type: "selectcustom",
                             placeholder: `${t("amount")}`,
+                            className: "col-12",
                             options: Documentdatas.map((category: Document) => ({
                                 value: category.document_id, // Assuming sub_category_id is the unique identifier for subcategories
                                 label: category.document_name,

@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 // Only these pages are accessible without login
-const publicRoutes = ['/en', '/auth/signup'];
+const publicRoutes = ['/mr', '/auth/signup'];
 
 // Create localization middleware
 const i18nMiddleware = createMiddleware({
@@ -20,7 +20,7 @@ export function middleware(request: NextRequest) {
 
   // If not logged in & trying to access a protected route, redirect to login
   if (!token && !isPublicRoute) {
-    return NextResponse.redirect(new URL('/en', request.url)); // Redirect to login
+    return NextResponse.redirect(new URL('/mr', request.url)); // Redirect to login
   }
 
   // Allow authenticated users & apply localization

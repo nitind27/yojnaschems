@@ -48,7 +48,7 @@ const Page = async () => {
     const breadcrumbs = [
 
         { label: 'dashboard', href: '/dashboard' },
-        { label: 'Plan', href: '/yojna/schemes/plans' },
+        { label: 'Schemstitle', href: '/yojnawisedoc' },
     ];
     return (
         <div>

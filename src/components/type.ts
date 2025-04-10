@@ -647,6 +647,8 @@ export type DocumentYojana = {
   subcategory_id?: number | null;
   documents?: string | null;
   yojana_id?: number | null;
+  year_id?: string | null;
+  yojna_name?: string | null;
   status?: string | null;
   ins_date_time: Date;
   update_date_time: Date;

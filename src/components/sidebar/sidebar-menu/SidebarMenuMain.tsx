@@ -89,7 +89,7 @@ const SidebarMenuMain = () => {
           to="/apps/chat"
           title={t("nbschemes")}
           fontIcon="bi-chat-left"
-          icon="burger-menu-2"
+          icon="burger-menu-3"
         >
           {/* List of Manage Submenu Items */}
           <SidebarMenuItem
@@ -118,33 +118,22 @@ const SidebarMenuMain = () => {
             hasBullet={true}
             onClick={() => handleItemClick(`/${localActive}/yojna/schemes/plans`)}
           />
-          <SidebarMenuItem
-            to={`/${localActive}/yojna/schemes/appplans`}
-            title={t("App_plan")}
-            hasBullet={true}
-            onClick={() => handleItemClick(`/${localActive}/yojna/schemes/appplans`)}
-          />
-
-
-
-
-
-
+        
         </SidebarMenuItemWithSub>
 
 
         <SidebarMenuItem
           to={`/${localActive}/document`}
-          icon="home"
-          title={"Document"}
+          icon="document"
+          title={t("document")}
           fontIcon="bi-app-indicator"
           onClick={() => handleItemClick(`/${localActive}/document`)} // Store path on click
         />
 
         <SidebarMenuItem
           to={`/${localActive}/yojnawisedoc`}
-          icon="home"
-          title={"Yojana Vice Documet"}
+          icon="note-2"
+          title={t("Schemstitle")}
           fontIcon="bi-app-indicator"
           onClick={() => handleItemClick(`/${localActive}/yojnawisedoc`)} // Store path on click
         />

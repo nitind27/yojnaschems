@@ -23,11 +23,13 @@
   "Sidebar": {
     "dashboard": "डैशबोर्ड",
     "clustermenu": "क्लस्टर",
+    "document":"दस्तावेज़",
     "manage": "प्रबंधित करें",
     "townmenu": "तालुका",
     "GramPanchayat": "ग्राम पंचायत",
     "Mahsulgaav": "महासुल गांव",
     "school": "स्कूल",
+    "Schemstitle": "योजना वार दस्तावेज़",
     "student": "छात्र",
     "suvidha": "सुविधा",
     "pratinidhi": "प्रतिनिधि",

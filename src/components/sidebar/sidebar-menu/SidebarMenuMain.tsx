@@ -77,7 +77,7 @@ const SidebarMenuMain = () => {
           />
           <SidebarMenuItem
             to={`/${localActive}/manage/yearadd`}
-            title={t("yearadd")}
+            title={t("year")}
             hasBullet={true}
             onClick={() =>
               handleItemClick(`/${localActive}/manage/grampanchayat`)

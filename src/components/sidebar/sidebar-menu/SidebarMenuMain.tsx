@@ -138,13 +138,13 @@ const SidebarMenuMain = () => {
           onClick={() => handleItemClick(`/${localActive}/document`)} // Store path on click
         />
 
-        <SidebarMenuItem
+        {/* <SidebarMenuItem
           to={`/${localActive}/yojnawisedoc`}
           icon="note-2"
           title={t("Schemstitle")}
           fontIcon="bi-app-indicator"
           onClick={() => handleItemClick(`/${localActive}/yojnawisedoc`)} // Store path on click
-        />
+        /> */}
 
       </div>
     </>

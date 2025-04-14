@@ -5,9 +5,10 @@ import Loader from "@/common/Loader ";
 ;
 import Clusteradd from "@/components/manage/Clusteradd";
 import Category from "@/components/Schemes/Category";
+import Documentwisedata from "@/components/Schemes/Documentwisedata";
 import Plans from "@/components/Schemes/Plans";
 import SubCategorys from "@/components/Schemes/SubCategorys";
-import { Bank, Categorys, SubCategory, TblYojanaType, YojanaMaster, YojanaYear } from "@/components/type";
+import { Bank, Categorys, Document, DocumentYojana, SubCategory, TblYojanaType, YojanaMaster, YojanaYear } from "@/components/type";
 import prisma from "@/lib/db";
 import React from "react";
 
@@ -18,8 +19,8 @@ const Page = async () => {
     let Bankdata: Bank[] = [];
     let category: Categorys[] = [];
     let yojnamaster: YojanaMaster[] = [];
-
-
+    let Documentdatas: Document[] = [];
+    let yojnawiseDocumentdatas: DocumentYojana[] = [];
     try {
         category = await prisma.category.findMany(); // Fetch all clusters
         subCategory = await prisma.subCategory.findMany(); // Fetch all clusters
@@ -27,7 +28,8 @@ const Page = async () => {
         yojnatype = await prisma.yojnatype.findMany(); // Fetch all clusters
         yojnamaster = await prisma.yojanaMaster.findMany(); // Fetch all clusters
         Bankdata = await prisma.bank.findMany();
-
+        Documentdatas = await prisma.document.findMany();
+        yojnawiseDocumentdatas = await prisma.documentYojana.findMany();
     } catch (error) {
         console.error("Error fetching cluster data:", error);
         return (
@@ -46,7 +48,7 @@ const Page = async () => {
     const breadcrumbs = [
 
         { label: 'dashboard', href: '/dashboard' },
-        { label: 'Plan', href: '/yojna/schemes/plans' },
+        { label: 'Schemstitle', href: '/yojnawisedoc' },
     ];
     return (
         <div>
@@ -54,7 +56,7 @@ const Page = async () => {
             <h1 className="card card-body mt-5">
                 <TitleCard breadcrumbs={breadcrumbs} />
             </h1>
-            <Plans initialcategoryData={subCategory} YojnaYear={YojnaYear} Bankdata={Bankdata} category={category} yojnatype={yojnatype} yojnamaster={yojnamaster} />
+            <Documentwisedata initialcategoryData={subCategory} YojnaYear={YojnaYear} Bankdata={Bankdata} category={category} yojnatype={yojnatype} yojnamaster={yojnamaster} Documentdatas={Documentdatas} yojnawiseDocumentdatas={yojnawiseDocumentdatas}/>
         </div>
     );
 };

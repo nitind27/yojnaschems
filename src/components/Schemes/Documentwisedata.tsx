@@ -165,47 +165,47 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
             accessorKey: "ruleset",
             header: `कायदे / नियम / शासन निर्णय`,
         },
-        
+
         {
             accessorKey: "procedurebenefits",
             header: `थोडक्यात कार्यपद्धती व लाभ`,
         },
-        
+
         {
             accessorKey: "Eligibility",
             header: `पात्रता / निकष`,
         },
-        
+
         {
             accessorKey: "Approvedapplication",
             header: `अर्जाचा मान्यता प्राप्त नमुना`,
         },
-        
+
         {
             accessorKey: "Implementationmechanism",
             header: `अंमलबजावणी यंत्रणा`,
         },
-        
+
         {
             accessorKey: "applicationcost",
             header: `अर्जाची किंमत असल्यास किती?`,
         },
-        
+
         {
             accessorKey: "applicationavailable",
             header: `अर्ज कुठे उपलब्ध आहे`,
         },
-        
+
         {
             accessorKey: "payafee",
             header: `शुल्क भरावे लागते काय? किती`,
         },
-        
+
         {
             accessorKey: "Expectedduration",
             header: `अपेक्षित कालावधी`,
         },
-        
+
 
         {
             accessorKey: "documents",
@@ -396,10 +396,10 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
         setApprovedapplication(yojna.Approvedapplication)
         setImplementationmechanism(yojna.Implementationmechanism)
         setapplicationcost(yojna.applicationcost)
-        setapplicationavailable(yojna.applicationavailable  )
+        setapplicationavailable(yojna.applicationavailable)
         setpayafee(yojna.payafee)
         setExpectedduration(yojna.Expectedduration)
- 
+
 
         setDocument(yojna.documentdataid)
         handleShowPrint();
@@ -520,19 +520,9 @@ const Documentwisedata = ({ initialcategoryData, YojnaYear, Bankdata, category, 
                             label: `${t('yojnaname')}`,
                             value: yojnname,
                             onChange: (e: any) => setyojnaname(e.target.value),
-                            type: "select",
+                            type: "text",
                             className: 'col-12',
-                            options: yojnamaster
-                                .filter((type) =>
-                                    String(type.yojana_year_id) == yojnayear &&
-                                    String(type.yojana_type) == yojnatyp &&
-                                    String(type.category_id) == categoryName &&
-                                    String(type.sub_category_id) == subcategoryName
-                                )
-                                .map((yojna) => ({
-                                    value: yojna.yojana_id,
-                                    label: yojna.yojana_name,
-                                })),
+
                             placeholder: `${t("yojnaname")}`, // Optional placeholder for select input
                         },
 

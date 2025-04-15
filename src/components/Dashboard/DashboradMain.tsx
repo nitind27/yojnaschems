@@ -27,8 +27,8 @@ const DashboradMain = () => {
 
     return (
         <div>
-            <p>coming soon...</p>
-            {/* <PathHandler>
+            {/* <p>coming soon...</p> */}
+            <PathHandler>
 
 
                 <div className="card mt-5 p-3 ">
@@ -47,11 +47,7 @@ const DashboradMain = () => {
                                 <DashbordCard />
                             </Link>
                         </div>
-                        <div className="col-md-3 mt-5" onClick={() => handleItemClick(`/dashboard`)}>
-                            <Link href={`/${localActive}/dashboard`}>
-                                <Thakkarcard />
-                            </Link>
-                        </div>
+                       
                         <div className="col-md-3 mt-5" onClick={() => handleItemClick(`/sports`)}>
                             <Link href={`/${localActive}/dashboard/sports`}>
                                 <Sports />
@@ -59,7 +55,7 @@ const DashboradMain = () => {
                         </div>
                     </div>
                 </div>
-            </PathHandler> */}
+            </PathHandler>
         </div>
     );
 };

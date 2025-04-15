@@ -126,7 +126,13 @@ const SidebarMenuMain = () => {
             hasBullet={true}
             onClick={() => handleItemClick(`/${localActive}/yojna/schemes/plans`)}
           />
-        
+          <SidebarMenuItem
+            to={`/${localActive}/yojna/schemes/beneficiary`}
+            title={t("Beneficiary")}
+            hasBullet={true}
+            onClick={() => handleItemClick(`/${localActive}/yojna/schemes/beneficiary`)}
+          />
+
         </SidebarMenuItemWithSub>
 
 
@@ -145,6 +151,13 @@ const SidebarMenuMain = () => {
           fontIcon="bi-app-indicator"
           onClick={() => handleItemClick(`/${localActive}/yojnawisedoc`)} // Store path on click
         /> */}
+        <SidebarMenuItem
+          to={`/${localActive}/missionPeak`}
+          icon="notification"
+          title={t("missionsikhri")}
+          fontIcon="bi-app-notification"
+          onClick={() => handleItemClick(`/${localActive}/missionPeak`)}
+        />
 
       </div>
     </>
